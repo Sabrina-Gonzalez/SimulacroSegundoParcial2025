@@ -58,7 +58,7 @@ class Formacion{
 
         $i=0;
         while ($i < count($coleccionVagones) && !$incorporado) {
-            if (is_a($coleccionVagones[$i], "VagonPasajeros")) {
+            if ($coleccionVagones[$i] instanceof VagonPasajeros) {
                 $pasajerosIncorporados=$coleccionVagones[$i]->incorporarPasajeroVagon($cantidadPasajeros);
                 if ($pasajerosIncorporados) {
                     $incorporado=true;
@@ -95,7 +95,7 @@ class Formacion{
         $cantidadVagonPasajero=0;
         $totalPasajeros=0;
         foreach ($coleccionVagones as $vagon) {
-            if (is_a($vagon, "VagonPasajeros")) {
+            if ($vagon instanceof VagonPasajeros) {
                 $cantidadVagonPasajero++;
                 $totalPasajeros+=$vagon->getCantidadPasajerosAbordo();
             }
