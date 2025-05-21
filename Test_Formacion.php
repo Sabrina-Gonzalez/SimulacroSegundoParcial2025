@@ -9,9 +9,13 @@ include_once 'Formacion.php';
 $objLocomotora= new Locomotora(188000,140);
 
 // 2.Se crea 3 objetos con la  información visualizada en la tabla:
-$objVagon1= new VagonPasajeros(2015, 20, 3, 15000,30,25);
-$objVagonCarga= new VagonCarga(2018,20,3,15000,60000,55000);
-$objVagon2= new VagonPasajeros(2020,25,4,15000,50,50);
+$objVagon1= new VagonPasajeros(2015, 20, 3, 15000,30);
+$objVagonCarga= new VagonCarga(2018,20,3,15000,60000);
+$objVagon2= new VagonPasajeros(2020,25,4,15000,50);
+
+$objVagon1->incorporarPasajeroVagon(25);
+$objVagonCarga->incorporarCargaVagon(55000);
+$objVagon2->incorporarPasajeroVagon(50);
 
 //3. Se crea un objeto formación que tiene la locomotora y los vagones creados en (1) y (2) usando el método incorporarVagonFormacion.
 $objFormacion= new Formacion($objLocomotora,3);
