@@ -4,6 +4,7 @@ class Vagon{
     private $largoVagon; 
     private $anchoVagon;
     private $pesoDelVagonVacio;
+    private $pesoVagon;
 
     //Constructor
     public function __construct($anioDeInstalacion,$largoVagon,$anchoVagon,$pesoDelVagonVacio)
@@ -12,6 +13,7 @@ class Vagon{
         $this->largoVagon=$largoVagon;
         $this->anchoVagon=$anchoVagon;
         $this->pesoDelVagonVacio=$pesoDelVagonVacio;
+        $this->pesoVagon=$pesoDelVagonVacio;
     }
 
     //Getters
@@ -27,6 +29,9 @@ class Vagon{
     public function getPesoVagonVacio(){
         return $this->pesoDelVagonVacio;
     }
+    public function getPesoVagon(){
+        return $this->pesoVagon;
+    }
 
     //Setters
     public function setAnioInstalacion($anioDeInstalacion){
@@ -41,6 +46,9 @@ class Vagon{
     public function setPesoVagonVacio($pesoDelVagonVacio){
         $this->pesoDelVagonVacio=$pesoDelVagonVacio;
     }
+    public function setPesoVagon(){
+        $this->pesoVagon;
+    }
 
     //toString
     public function __toString()
@@ -48,7 +56,8 @@ class Vagon{
         return "Año de Instalacion del Vagon: ".$this->getAnioInstalacion().
         "\nLargo del Vagon: ".$this->getLargoVagon().
         "\nAncho del Vagon: ".$this->getAnchoVagon().
-        "\nPeso del Vagon Vacio: ".$this->getPesoVagonVacio()."KG\n";
+        "\nPeso del Vagon Vacio: ".$this->getPesoVagonVacio()."KG".
+        "\nPeso del Vagon: ".$this->getPesoVagon()."KG\n";
     }
 
     /**Implementar el método calcularPesoVagon y redefinirlo según sea necesario. 
