@@ -5,11 +5,11 @@ class VagonPasajeros extends Vagon{
     private $pesoPromedioPasajeros;
 
     //Constructor
-    public function __construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio,$cantidadMaximaPasajeros,$cantidadPasajerosAbordo)
+    public function __construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio,$cantidadMaximaPasajeros)
     {
         parent::__construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio);
         $this->cantidadMaximaPasajeros=$cantidadMaximaPasajeros;
-        $this->cantidadPasajerosAbordo=$cantidadPasajerosAbordo;
+        $this->cantidadPasajerosAbordo=0;
         $this->pesoPromedioPasajeros=50;
     }
 
@@ -51,6 +51,7 @@ class VagonPasajeros extends Vagon{
         $pesoPromedioPasajero=$this->getPesoPromedioPasajeros();
         $pesoVagonVacio=parent::calcularPesoVagon();
         $pesoVagon=($cantidadPasajerosAbordo * $pesoPromedioPasajero) + $pesoVagonVacio;
+        $this->setPesoVagon($pesoVagon);
         return $pesoVagon;
     }
 
@@ -66,6 +67,7 @@ class VagonPasajeros extends Vagon{
         $nuevaCantidadPasajeros=$cantidadPasajerosAbordo + $cantidadPasajeros;
         if ($nuevaCantidadPasajeros <= $cantidadMaximaPasajeros) {
             $this->setCantidadPasajerosAbordo($nuevaCantidadPasajeros);
+            $this->calcularPesoVagon();
             $agregado=true;
         }
         return $agregado;
