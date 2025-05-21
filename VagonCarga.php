@@ -4,11 +4,11 @@ class VagonCarga extends Vagon{
     private $pesoCargaTransportada;
 
     //Constructor
-    public function __construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio,$pesoMaximoCarga,$pesoCargaTransportada)
+    public function __construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio,$pesoMaximoCarga)
     {
         parent::__construct($anioInstalacion,$largoVagon,$anchoVagon,$pesoVagonVacio);
         $this->pesoMaximoCarga=$pesoMaximoCarga;
-        $this->pesoCargaTransportada=$pesoCargaTransportada;
+        $this->pesoCargaTransportada=0;
     }
 
     //Getters
@@ -45,6 +45,7 @@ class VagonCarga extends Vagon{
         $pesoVagon=null;
         if ($pesoCargaTransportada <= $pesoMaximoCarga) {
             $pesoVagon=$pesoCargaTransportada + ($pesoCargaTransportada * 0.2) + $pesoVagonVacio;
+            $this->setPesoVagon($pesoVagon);
         }
         return $pesoVagon;
     }
@@ -61,6 +62,7 @@ class VagonCarga extends Vagon{
         $pesoNuevo=$pesoCargaActual + $pesoCarga;
         if ($pesoNuevo <= $pesoMaximoCarga) {
             $this->setPesoCargaTransportada($pesoNuevo);
+            $this->calcularPesoVagon();
             $agregado=true;
         }
         return $agregado;
